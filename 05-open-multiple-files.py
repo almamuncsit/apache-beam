@@ -1,6 +1,7 @@
 import apache_beam as beam
 from apache_beam.options.pipeline_options import PipelineOptions
 
+
 class MyOptions(PipelineOptions):
   @classmethod
   def _add_argparse_args(cls, parser):
@@ -12,6 +13,7 @@ class MyOptions(PipelineOptions):
         '--output',
         help='Output for the pipeline',
         default='count')
+
 
 # Custom Class for ParDo
 class SplitEachLine(beam.DoFn):
@@ -41,6 +43,7 @@ def set_data():
     return data
     
 data = set_data()
+
 
 with beam.Pipeline(options=MyOptions()) as p:
     

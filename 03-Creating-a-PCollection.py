@@ -13,24 +13,6 @@ class MyOptions(PipelineOptions):
         help='Output for the pipeline',
         default='count')
 
-# Custom Class for ParDo
-class SplitEachLine(beam.DoFn):
-    def process(self, element):
-        print(element)
-        return [element.split(" ")]
-
-# Custom Class for ParDo
-class ComputeWordLengthFn(beam.DoFn):
-    def process(self, element):
-        print(element)
-        return [element[0] + element[1]]
-
-# Print the lenghts
-class PrintLenghtFn(beam.DoFn):
-    def process(self, element):
-        print(element)
-        return [element]
-
 
 with beam.Pipeline(options=MyOptions()) as p:
     # Create a PCollection (lines) from a txt file
@@ -47,4 +29,3 @@ with beam.Pipeline(options=MyOptions()) as p:
         ]))
 
 
-  
